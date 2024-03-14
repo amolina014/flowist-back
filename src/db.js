@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
 
-const MONGO_BBDD = process.env.MONGO_BBDD || 'mongodb://127.0.0.1:27017/gtd_project';
+let connectionString =
+	process.env.DEV_MODE === 'true'
+		? process.env.LOCAL_BBDD
+		: process.env.ATLAS_BBDD;
+
 const connectDB = async () =>
-	await mongoose.connect(MONGO_BBDD)
+	await mongoose.connect(connectionString)
 		.then(res => console.log('Mongo connected'))
 		.catch(err => console.error(err));
 connectDB();
