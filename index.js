@@ -25,6 +25,7 @@ app.use(() => { throw new NotFoundError() });
 
 // Middleware de gestion de errores
 app.use(errorMiddleware);
+app.use(errorMiddleware);
 
 app.listen(3000, () => {
 	console.log('Server running...');
